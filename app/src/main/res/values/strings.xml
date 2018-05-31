@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">GoogleBooksApp</string>
+    <string name="instructions">Введите название книги, её часть, либо часть текста из книги,
+        которую хотите найти.</string>
+    <string name="button_text">Найти!</string>
+    <string name="input_hint">Введите название книги</string>
+    <string name="loading">Loading...</string>
+    <string name="title_activity_results">ResultsActivity</string>
+
+</resources>

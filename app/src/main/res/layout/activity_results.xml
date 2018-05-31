@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="ru.dmitry.googlebooksapp.ResultsActivity">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:id="@+id/bookImage"/>
+
+    <TextView
+        android:id="@+id/tittleDiscription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Название:"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:id="@+id/tittleText"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline" />
+
+    <TextView
+        android:id="@+id/authorDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Автор:"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/authorText"
+        android:textAlignment="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"/>
+
+    <TextView
+        android:id="@+id/publisherDiscription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Издание:"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold|italic"/>
+
+    <TextView
+        android:id="@+id/publisher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"/>
+
+    <br.com.bloder.magic.view.MagicButton
+        android:id="@+id/magic_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:magic_button_size="50dp"
+        app:button_icon="@drawable/web"
+        app:button_icon_width="25dp"
+        app:button_icon_height="25dp"
+        app:hide_text="Открыть ссылку на книгу"
+        app:hide_text_size="3dp"
+        app:hide_text_color="@android:color/black"
+        app:icon_button_color="#e2e2e1" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/previous_button"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_toLeftOf="@+id/bookNumber"
+            android:src="@drawable/arrow_left_bold" />
+
+        <TextView
+            android:id="@+id/bookNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="0"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline" />
+
+        <ImageButton
+            android:id="@+id/next_button"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/bookNumber"
+            android:src="@drawable/arrow_right_bold" />
+
+    </RelativeLayout>
+
+</LinearLayout>
