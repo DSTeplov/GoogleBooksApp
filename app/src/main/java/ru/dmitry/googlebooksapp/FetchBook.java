@@ -19,10 +19,11 @@ public class FetchBook extends AsyncTask<String, Void, String> {
     private OnTaskCompleted listner;
     ArrayList<Book> bookList;
 
-    FetchBook(ArrayList<Book> bookList, OnTaskCompleted listner){
+    FetchBook(ArrayList<Book> bookList, OnTaskCompleted listner) {
         this.bookList = bookList;
         this.listner = listner;
     }
+
     @Override
     protected String doInBackground(String... params) {
         return NetworkUtils.getBookInfo(params[0]);
@@ -37,7 +38,7 @@ public class FetchBook extends AsyncTask<String, Void, String> {
         String imageUrl = null;
         String publisher = null;
 
-        try{
+        try {
             JSONObject jsonObject = new JSONObject(s);
             JSONArray itemsArray = jsonObject.getJSONArray("items");
 
@@ -46,19 +47,19 @@ public class FetchBook extends AsyncTask<String, Void, String> {
 
                 JSONObject volumeInfo = book.getJSONObject("volumeInfo");
 
-                try{
+                try {
                     title = volumeInfo.getString("title");
-                    if(volumeInfo.has("authors")){
+                    if (volumeInfo.has("authors")) {
                         JSONArray authors = volumeInfo.getJSONArray("authors");
                         author = authors.getString(0);
                     }
-                    if(volumeInfo.has("publisher")){
+                    if (volumeInfo.has("publisher")) {
                         publisher = volumeInfo.getString("publisher");
                     }
-                    if(volumeInfo.has("infoLink")) {
+                    if (volumeInfo.has("infoLink")) {
                         infoUrl = volumeInfo.getString("infoLink");
                     }
-                    if(volumeInfo.has("imageLinks")){
+                    if (volumeInfo.has("imageLinks")) {
                         JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
                         imageUrl = imageLinks.getString("smallThumbnail");
                     }
@@ -66,8 +67,7 @@ public class FetchBook extends AsyncTask<String, Void, String> {
                         Book bookItem = new Book(title, author, infoUrl, imageUrl, publisher);
                         bookList.add(bookItem);
                     }
-                }
-                catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 

@@ -20,7 +20,7 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     final String LOG_TAG = "TAG";
     private Button btnSearch;
     private EditText mBookInput;
@@ -43,24 +43,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         try {
             inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                     InputMethodManager.HIDE_NOT_ALWAYS);
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-            //For checking the network state and empty search field
+        //For checking the network state and empty search field
         ConnectivityManager conMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = conMgr.getActiveNetworkInfo();
 
-            if(queryString.length() == 0){
-                mBookInput.setText("Please enter a search term.");
-            } else if(networkInfo == null && !networkInfo.isConnected()){
-                mBookInput.setText("Please check your network connection and try again.");
-            }
-            else {
-                Log.d(LOG_TAG, "YES");
-                Intent intent = new Intent(this, ResultsActivity.class);
-                intent.putExtra("BookInput", mBookInput.getText().toString());
-                startActivity(intent);
-            }
+        if (queryString.length() == 0) {
+            mBookInput.setText("Please enter a search term.");
+        } else if (networkInfo == null && !networkInfo.isConnected()) {
+            mBookInput.setText("Please check your network connection and try again.");
+        } else {
+            Log.d(LOG_TAG, "YES");
+            Intent intent = new Intent(this, ResultsActivity.class);
+            intent.putExtra("BookInput", mBookInput.getText().toString());
+            startActivity(intent);
+        }
     }
 }

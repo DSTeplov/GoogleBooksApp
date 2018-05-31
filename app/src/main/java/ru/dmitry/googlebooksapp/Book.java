@@ -11,7 +11,7 @@ public class Book {
     private String imageUrl;
     private String publisher;
 
-    public Book(String title, String author, String infoUrl, String imageUrl, String publisher){
+    public Book(String title, String author, String infoUrl, String imageUrl, String publisher) {
         this.title = title;
         this.author = author;
         this.infoUrl = infoUrl;
@@ -27,7 +27,9 @@ public class Book {
         return author;
     }
 
-    public String getInfoUrl() { return infoUrl; }
+    public String getInfoUrl() {
+        return infoUrl;
+    }
 
     public String getImageUrl() {
         return imageUrl;

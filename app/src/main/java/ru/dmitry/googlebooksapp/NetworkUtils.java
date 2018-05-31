@@ -23,10 +23,10 @@ public class NetworkUtils {
 
     static String getBookInfo(String queryString) {
         HttpURLConnection urlConnection = null;
-        BufferedReader reader= null;
+        BufferedReader reader = null;
         String bookJsonString = null;
 
-        try{
+        try {
             Uri buildUri = Uri.parse(BOOK_BASE_URL).buildUpon()
                     .appendQueryParameter(QUERY_PARAM, queryString)
                     .appendQueryParameter(MAX_RESULTS, "10")
@@ -41,13 +41,12 @@ public class NetworkUtils {
 
             InputStream inputStream = urlConnection.getInputStream();
             StringBuffer buffer = new StringBuffer();
-            if(inputStream == null) {
+            if (inputStream == null) {
                 return null;
             }
             reader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
-            while ((line = reader.readLine()) != null)
-            {
+            while ((line = reader.readLine()) != null) {
                 buffer.append(line + "\n");
             }
             if (buffer.length() == 0) {
@@ -56,18 +55,17 @@ public class NetworkUtils {
 
             bookJsonString = buffer.toString();
 
-        }catch (Exception ex) {
-        ex.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
             return null;
-        }finally {
-            if(urlConnection != null) {
+        } finally {
+            if (urlConnection != null) {
                 urlConnection.disconnect();
             }
             if (reader != null) {
-                try{
+                try {
                     reader.close();
-                } catch (IOException e)
-                {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }

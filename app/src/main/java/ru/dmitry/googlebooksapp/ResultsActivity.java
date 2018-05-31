@@ -14,11 +14,14 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
+
 import br.com.bloder.magic.view.MagicButton;
 
-public class ResultsActivity extends AppCompatActivity implements View.OnClickListener{
+public class ResultsActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = MainActivity.class.getSimpleName();
 
     final String LOG_TAG = "TAG";
@@ -39,7 +42,7 @@ public class ResultsActivity extends AppCompatActivity implements View.OnClickLi
         OnTaskCompleted listner = new OnTaskCompleted() {
             @Override
             public void onTaskCompleted() {
-                if (bookList.size() != 0){
+                if (bookList.size() != 0) {
                     setComponents();
                     mBookNumber.setText("1/" + bookList.size());
                 } else {
@@ -57,11 +60,11 @@ public class ResultsActivity extends AppCompatActivity implements View.OnClickLi
         number = 0;
         mAuthorText = findViewById(R.id.authorText);
         mTitleText = findViewById(R.id.tittleText);
-        mbtn_book = (MagicButton) findViewById(R.id.magic_button);
+        mbtn_book = findViewById(R.id.magic_button);
         mbtn_book.setMagicButtonClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!mTitleText.getText().toString().equals("")) {
+                if (!mTitleText.getText().toString().equals("")) {
                     Intent intent;
                     if (urlInfo != null) {
                         intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlInfo));
@@ -90,15 +93,15 @@ public class ResultsActivity extends AppCompatActivity implements View.OnClickLi
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = conMgr.getActiveNetworkInfo();
 
-        if (networkInfo != null && networkInfo.isConnected() && queryString != null){
+        if (networkInfo != null && networkInfo.isConnected() && queryString != null) {
             new FetchBook(bookList, listner).execute(queryString);
             mAuthorText.setText("");
             mTitleText.setText(R.string.loading);
-        } else{
+        } else {
             mAuthorText.setText("");
             mTitleText.setHint("Please check your network connection and try again.");
         }
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             mTitleText.setText(savedInstanceState.getString(TITLETEXT_STATE));
             mAuthorText.setText(savedInstanceState.getString(AUTHORTEXT_STATE));
         }
@@ -114,7 +117,7 @@ public class ResultsActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.previous_button:
                 Log.d(LOG_TAG, Integer.toString(bookList.size()));
                 if (number > 0) number--;
